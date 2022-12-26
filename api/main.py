@@ -14,7 +14,7 @@ async def root():
 @app.post("/model")
 def get_ml_model(model_input: schemas.ModelInput):
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    model = pickle.load(open(dir_path+"\models\model.pkl", 'rb'))
+    model = pickle.load(open(dir_path+"/models/model.pkl", 'rb'))
 
     df_feats = pd.DataFrame([jsonable_encoder(model_input)])
     predict = model.predict(df_feats)
